@@ -1,76 +1,10 @@
-<!doctype html>
-<html lang="az">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Satdıq — Azərbaycanda əşyaları asanlıqla al və sat." />
-  <title>Satdıq — al, sat, dəyiş</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <header class="topbar">
-    <a class="brand" href="#" aria-label="Satdıq ana səhifə"><span class="brand-mark">S</span><span>satdıq</span><b>.az</b></a>
-    <nav>
-      <a href="#listings">Elanlar</a><a href="#how">Necə işləyir?</a><a href="#safety">Təhlükəsizlik</a>
-    </nav>
-    <div class="header-actions">
-      <button class="icon-button" id="favoritesBtn" aria-label="Seçilmişlər">♡ <span id="favCount">0</span></button>
-      <button class="ghost">Daxil ol</button>
-      <button class="primary" id="openPost">＋ Elan yerləşdir</button>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="hero-copy">
-        <span class="eyebrow">AZƏRBAYCANIN YENİ ONLAYN BAZARI</span>
-        <h1>Lazım olanı tap.<br><em>Artıq olanı sat.</em></h1>
-        <p>Minlərlə elan arasında axtar, satıcı ilə birbaşa danış və sərfəli alış-veriş et.</p>
-        <div class="search-box">
-          <label><span>⌕</span><input id="searchInput" placeholder="Nə axtarırsınız?" /></label>
-          <label class="location"><span>⌖</span><select id="cityFilter"><option value="">Bütün Azərbaycan</option><option>Bakı</option><option>Sumqayıt</option><option>Gəncə</option><option>Şəki</option><option>Lənkəran</option></select></label>
-          <button id="searchBtn">Axtar</button>
-        </div>
-        <div class="trending"><span>Populyar:</span><button data-query="iPhone">iPhone</button><button data-query="mənzil">mənzil</button><button data-query="velosiped">velosiped</button></div>
-      </div>
-      <div class="hero-art" aria-hidden="true">
-        <div class="sun"></div><div class="blob"></div>
-        <div class="floating-card card-one"><span>🚗</span><div><b>Yeni elan</b><small>Mercedes C200</small></div><strong>23 900 ₼</strong></div>
-        <div class="floating-card card-two"><span>📱</span><div><b>Bu gün</b><small>iPhone 15 Pro</small></div><strong>1 899 ₼</strong></div>
-        <div class="hero-stat"><b>48 000+</b><span>aktiv elan</span></div>
-      </div>
-    </section>
-
-    <section class="categories" aria-label="Kateqoriyalar">
-      <div class="section-head"><div><span class="kicker">KATEQORİYALAR</span><h2>Nə axtarırsınız?</h2></div><button class="link-btn" id="allCategories">Hamısına bax →</button></div>
-      <div class="category-grid" id="categoryGrid"></div>
-    </section>
-
-    <section class="listings" id="listings">
-      <div class="section-head"><div><span class="kicker">SİZİN ÜÇÜN</span><h2>Ən yeni elanlar</h2></div><div class="sort"><span>Sırala:</span><select id="sortSelect"><option value="new">Ən yeni</option><option value="low">Ucuzdan bahaya</option><option value="high">Bahadan ucuza</option></select></div></div>
-      <div class="chips" id="chips"><button class="active" data-category="Hamısı">Hamısı</button><button data-category="Nəqliyyat">Nəqliyyat</button><button data-category="Elektronika">Elektronika</button><button data-category="Daşınmaz əmlak">Daşınmaz əmlak</button><button data-category="Ev və bağ">Ev və bağ</button></div>
-      <div class="listing-grid" id="listingGrid"></div>
-      <div class="empty" id="emptyState" hidden><span>⌕</span><h3>Heç nə tapılmadı</h3><p>Axtarış sözünü və ya filtrləri dəyişin.</p></div>
-      <button class="load-more" id="loadMore">Daha çox göstər</button>
-    </section>
-
-    <section class="how" id="how">
-      <div><span class="kicker">ÇOX ASAN</span><h2>3 addımda sat</h2><p>İstifadə etmədiyin əşyaya yeni sahib tapmaq bir neçə dəqiqə çəkir.</p></div>
-      <ol><li><b>01</b><div><h3>Şəkil çək</h3><p>Məhsulunu aydın şəkildə göstər.</p></div></li><li><b>02</b><div><h3>Elan yarat</h3><p>Məlumat və münasib qiymət əlavə et.</p></div></li><li><b>03</b><div><h3>Razılaş və sat</h3><p>Alıcı ilə təhlükəsiz əlaqə saxla.</p></div></li></ol>
-    </section>
-
-    <section class="safety" id="safety"><div class="shield">✓</div><div><span class="kicker">TƏHLÜKƏSİZLİK</span><h2>Rahat al, arxayın sat</h2><p>Şübhəli elanları yoxlayırıq, təhlükəsiz alış-veriş üçün tövsiyələr veririk və icmamızı qoruyuruq.</p></div><button>Qaydaları oxu →</button></section>
-  </main>
-
-  <footer><a class="brand" href="#"><span class="brand-mark">S</span><span>satdıq</span><b>.az</b></a><p>Azərbaycanda ağıllı alış-verişin ünvanı.</p><span>© 2026 Satdıq</span></footer>
-
-  <dialog id="postDialog">
-    <form method="dialog" id="postForm"><button class="close" value="cancel" aria-label="Bağla">×</button><span class="kicker">PULSUZ ELAN</span><h2>Nə satırsınız?</h2><p>Əsas məlumatları əlavə edin. Elan dərhal önizləmədə görünəcək.</p><label>Elanın adı<input name="title" required placeholder="Məsələn, iPhone 14 Pro" /></label><div class="form-row"><label>Qiymət (₼)<input name="price" type="number" min="0" required placeholder="0" /></label><label>Şəhər<select name="city"><option>Bakı</option><option>Sumqayıt</option><option>Gəncə</option><option>Şəki</option></select></label></div><label>Kateqoriya<select name="category"><option>Elektronika</option><option>Nəqliyyat</option><option>Daşınmaz əmlak</option><option>Ev və bağ</option><option>Şəxsi əşyalar</option></select></label><button class="submit" value="default">Elanı yerləşdir</button></form>
-  </dialog>
-  <div class="toast" id="toast" role="status"></div>
-  <script src="app.js"></script>
-</body>
-</html>
+<!doctype html><html lang="az"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Satdıq — Azərbaycanda elanlar</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"></head><body>
+<div class="utility"><div class="wrap"><nav><a href="#">Biznes üçün</a><a href="#">Yardım</a><a href="#">Təhlükəsizlik</a></nav><div><button id="favsTop">Seçilmişlər <span id="favCount">0</span></button><button>Mesajlar</button><button>Daxil ol</button></div></div></div>
+<header class="wrap header"><a class="logo" href="#"><i class="d d1"></i><i class="d d2"></i><i class="d d3"></i><i class="d d4"></i><span>satdıq</span></a><button class="post-btn" id="openPost">Elan yerləşdir</button></header>
+<main class="wrap"><section class="search-panel"><button class="catalog-btn" id="catalogBtn">☰ &nbsp; Bütün kateqoriyalar</button><label class="query"><input id="searchInput" placeholder="Elanlarda axtarın"><button id="clearSearch">×</button></label><label class="region">⌖ <select id="cityFilter"><option value="">Bütün Azərbaycan</option><option>Bakı</option><option>Sumqayıt</option><option>Gəncə</option><option>Xırdalan</option><option>Şəki</option></select></label><button class="search-btn" id="searchBtn">Axtar</button></section>
+<section class="category-strip" id="categoryStrip"></section>
+<section class="quick-row"><button class="quick q1" data-query="endirim"><b>Endirimli mallar</b><span>50%-dək sərfəli</span><i>🏷️</i></button><button class="quick q2" data-category="Daşınmaz əmlak"><b>Yeni tikililər</b><span>Birbaşa sahibindən</span><i>🏙️</i></button><button class="quick q3" data-category="Nəqliyyat"><b>Avtomobil seç</b><span>Yoxlanılmış elanlar</span><i>🚙</i></button><button class="quick q4" data-category="Xidmətlər"><b>Usta tap</b><span>Qiymətləri müqayisə et</span><i>🛠️</i></button></section>
+<section class="content" id="listings"><div class="feed"><div class="feed-head"><div><h1>Sizin üçün tövsiyələr</h1><p id="resultText">Azərbaycandan ən yeni elanlar</p></div><label>Sıralama <select id="sortSelect"><option value="new">Ən yeni</option><option value="low">Əvvəlcə ucuz</option><option value="high">Əvvəlcə bahalı</option></select></label></div><div class="chips" id="chips"><button class="active" data-category="Hamısı">Hamısı</button><button data-category="Nəqliyyat">Avtomobillər</button><button data-category="Daşınmaz əmlak">Əmlak</button><button data-category="Elektronika">Elektronika</button><button data-category="Ev və bağ">Ev və bağ</button></div><div class="listing-grid" id="listingGrid"></div><div class="empty" id="emptyState" hidden><b>Heç nə tapılmadı</b><span>Filtrləri dəyişib yenidən yoxlayın</span></div><button class="more" id="loadMore">Daha çox elan göstər</button></div>
+<aside><div class="service-card"><h3>Satdıq xidmətləri</h3><a><i class="si blue">🚚</i><span><b>Çatdırılma</b><small>Ödənişsiz geri qaytarma</small></span><em>›</em></a><a><i class="si violet">✓</i><span><b>Təhlükəsiz alış</b><small>Satıcını və elanı yoxla</small></span><em>›</em></a><a><i class="si green">🚘</i><span><b>Avtomobil tarixçəsi</b><small>VIN üzrə məlumat al</small></span><em>›</em></a></div><div class="business-card"><span>SATDIQ BİZNES</span><h3>Biznesiniz üçün hər şey bir yerdə</h3><div>🏪　🚚　🧰　👥</div><button>Biznes elanlarına bax</button></div><div class="safety-card"><span>🛡️</span><div><b>Dələduzlardan qorunun</b><p>Kart məlumatlarınızı paylaşmayın.</p><a>Təhlükəsizlik qaydaları</a></div></div></aside></section></main>
+<footer><div class="wrap footer-grid"><div><a class="logo small"><i class="d d1"></i><i class="d d2"></i><i class="d d3"></i><i class="d d4"></i><span>satdıq</span></a><p>Azərbaycanda pulsuz elanlar.</p></div><div><b>Alıcılara</b><a>Necə almaq olar</a><a>Təhlükəsiz alış</a><a>Çatdırılma</a></div><div><b>Satıcılara</b><a>Elan yerləşdir</a><a>Biznes hesabı</a><a>Qaydalar</a></div><div><b>Satdıq</b><a>Haqqımızda</a><a>Əlaqə</a><a>Vakansiyalar</a></div></div></footer>
+<dialog id="postDialog"><form id="postForm" method="dialog"><button class="close" value="cancel">×</button><h2>Yeni elan</h2><p>Bir neçə dəqiqəyə alıcınızı tapın</p><label>Elanın adı<input name="title" required placeholder="Məsələn, iPhone 15 Pro"></label><div class="form-row"><label>Qiymət, ₼<input name="price" type="number" min="0" required></label><label>Şəhər<select name="city"><option>Bakı</option><option>Sumqayıt</option><option>Gəncə</option><option>Xırdalan</option></select></label></div><label>Kateqoriya<select name="category"><option>Elektronika</option><option>Nəqliyyat</option><option>Daşınmaz əmlak</option><option>Ev və bağ</option></select></label><button class="submit">Elanı yerləşdir</button></form></dialog><div class="toast" id="toast"></div><script src="app.js"></script></body></html>
