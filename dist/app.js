@@ -1,0 +1,22 @@
+const categories=[['🚗','Nəqliyyat','12 480 elan'],['🏠','Daşınmaz əmlak','8 920 elan'],['📱','Elektronika','15 340 elan'],['🛋️','Ev və bağ','6 710 elan'],['👕','Şəxsi əşyalar','4 250 elan'],['⚽','Hobbi və idman','3 180 elan']];
+let listings=[
+ {id:1,title:'Mercedes-Benz C 200, 2018',price:23900,city:'Bakı',category:'Nəqliyyat',icon:'🚘',tone:'#dfe7dc',time:'bu gün, 12:40'},
+ {id:2,title:'iPhone 15 Pro, 256 GB',price:1899,city:'Bakı',category:'Elektronika',icon:'📱',tone:'#e4e1ee',time:'bu gün, 11:25'},
+ {id:3,title:'3 otaqlı yeni tikili, 118 m²',price:215000,city:'Bakı',category:'Daşınmaz əmlak',icon:'🏙️',tone:'#e8e1d2',time:'dünən, 20:10'},
+ {id:4,title:'Skandinaviya üslublu divan',price:780,city:'Sumqayıt',category:'Ev və bağ',icon:'🛋️',tone:'#efd9cc',time:'dünən, 18:45'},
+ {id:5,title:'Trek Marlin 7 velosiped',price:1250,city:'Gəncə',category:'Hobbi və idman',icon:'🚲',tone:'#dce8e7',time:'dünən, 16:30'},
+ {id:6,title:'MacBook Air M2, 2023',price:1750,city:'Bakı',category:'Elektronika',icon:'💻',tone:'#e3e5e1',time:'10 oktyabr'},
+ {id:7,title:'Bağ evi, 6 sot',price:98000,city:'Şəki',category:'Daşınmaz əmlak',icon:'🏡',tone:'#dae9d0',time:'10 oktyabr'},
+ {id:8,title:'Sony PlayStation 5 Slim',price:890,city:'Lənkəran',category:'Elektronika',icon:'🎮',tone:'#e1e2ec',time:'9 oktyabr'}
+];
+let saved=new Set(JSON.parse(localStorage.getItem('satdiq-favs')||'[]'));let activeCategory='Hamısı';
+const grid=document.querySelector('#listingGrid'),empty=document.querySelector('#emptyState');
+document.querySelector('#categoryGrid').innerHTML=categories.map(c=>`<button class="category" data-category="${c[1]}"><span>${c[0]}</span><b>${c[1]}</b><small>${c[2]}</small></button>`).join('');
+function money(n){return new Intl.NumberFormat('az-AZ').format(n)+' ₼'}
+function render(){let q=document.querySelector('#searchInput').value.trim().toLowerCase(),city=document.querySelector('#cityFilter').value,sort=document.querySelector('#sortSelect').value;let data=listings.filter(x=>(activeCategory==='Hamısı'||x.category===activeCategory)&&(!q||x.title.toLowerCase().includes(q))&&(!city||x.city===city));data.sort((a,b)=>sort==='low'?a.price-b.price:sort==='high'?b.price-a.price:b.id-a.id);grid.innerHTML=data.map(x=>`<article class="listing-card"><div class="listing-image" style="--tone:${x.tone}">${x.icon}</div><button class="fav ${saved.has(x.id)?'saved':''}" data-id="${x.id}" aria-label="Seçilmişlərə əlavə et">${saved.has(x.id)?'♥':'♡'}</button><div class="listing-body"><h3>${x.title}</h3><div class="price">${money(x.price)}</div><div class="meta"><span>⌖ ${x.city}</span><span>${x.time}</span></div></div></article>`).join('');empty.hidden=data.length>0;document.querySelector('#favCount').textContent=saved.size}
+function toast(message){const el=document.querySelector('#toast');el.textContent=message;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),2200)}
+document.addEventListener('click',e=>{const fav=e.target.closest('.fav');if(fav){let id=+fav.dataset.id;saved.has(id)?saved.delete(id):saved.add(id);localStorage.setItem('satdiq-favs',JSON.stringify([...saved]));render();toast(saved.has(id)?'Seçilmişlərə əlavə edildi':'Seçilmişlərdən silindi')}const cat=e.target.closest('[data-category]');if(cat){activeCategory=cat.dataset.category;document.querySelectorAll('#chips button').forEach(b=>b.classList.toggle('active',b.dataset.category===activeCategory));render();document.querySelector('#listings').scrollIntoView()}const trend=e.target.closest('[data-query]');if(trend){document.querySelector('#searchInput').value=trend.dataset.query;render()}});
+['searchInput','cityFilter','sortSelect'].forEach(id=>document.querySelector('#'+id).addEventListener(id==='searchInput'?'input':'change',render));document.querySelector('#searchBtn').onclick=render;
+document.querySelector('#openPost').onclick=()=>document.querySelector('#postDialog').showModal();
+document.querySelector('#postForm').addEventListener('submit',e=>{e.preventDefault();let d=new FormData(e.target);listings.unshift({id:Date.now(),title:d.get('title'),price:+d.get('price'),city:d.get('city'),category:d.get('category'),icon:'✨',tone:'#e9f6bd',time:'indi'});document.querySelector('#postDialog').close();e.target.reset();activeCategory='Hamısı';render();toast('Elanınız önizləməyə əlavə edildi')});
+document.querySelector('#loadMore').onclick=()=>toast('Bütün yeni elanları göstərdik');document.querySelector('#favoritesBtn').onclick=()=>toast(saved.size?`${saved.size} seçilmiş elanınız var`:'Hələ seçilmiş elan yoxdur');render();

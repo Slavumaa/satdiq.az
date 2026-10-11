@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Satdıq — Azərbaycanda əşyaları asanlıqla al və sat." />
+  <title>Satdıq — al, sat, dəyiş</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Satdıq ana səhifə"><span class="brand-mark">S</span><span>satdıq</span><b>.az</b></a>
+    <nav>
+      <a href="#listings">Elanlar</a><a href="#how">Necə işləyir?</a><a href="#safety">Təhlükəsizlik</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-button" id="favoritesBtn" aria-label="Seçilmişlər">♡ <span id="favCount">0</span></button>
+      <button class="ghost">Daxil ol</button>
+      <button class="primary" id="openPost">＋ Elan yerləşdir</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">AZƏRBAYCANIN YENİ ONLAYN BAZARI</span>
+        <h1>Lazım olanı tap.<br><em>Artıq olanı sat.</em></h1>
+        <p>Minlərlə elan arasında axtar, satıcı ilə birbaşa danış və sərfəli alış-veriş et.</p>
+        <div class="search-box">
+          <label><span>⌕</span><input id="searchInput" placeholder="Nə axtarırsınız?" /></label>
+          <label class="location"><span>⌖</span><select id="cityFilter"><option value="">Bütün Azərbaycan</option><option>Bakı</option><option>Sumqayıt</option><option>Gəncə</option><option>Şəki</option><option>Lənkəran</option></select></label>
+          <button id="searchBtn">Axtar</button>
+        </div>
+        <div class="trending"><span>Populyar:</span><button data-query="iPhone">iPhone</button><button data-query="mənzil">mənzil</button><button data-query="velosiped">velosiped</button></div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="sun"></div><div class="blob"></div>
+        <div class="floating-card card-one"><span>🚗</span><div><b>Yeni elan</b><small>Mercedes C200</small></div><strong>23 900 ₼</strong></div>
+        <div class="floating-card card-two"><span>📱</span><div><b>Bu gün</b><small>iPhone 15 Pro</small></div><strong>1 899 ₼</strong></div>
+        <div class="hero-stat"><b>48 000+</b><span>aktiv elan</span></div>
+      </div>
+    </section>
+
+    <section class="categories" aria-label="Kateqoriyalar">
+      <div class="section-head"><div><span class="kicker">KATEQORİYALAR</span><h2>Nə axtarırsınız?</h2></div><button class="link-btn" id="allCategories">Hamısına bax →</button></div>
+      <div class="category-grid" id="categoryGrid"></div>
+    </section>
+
+    <section class="listings" id="listings">
+      <div class="section-head"><div><span class="kicker">SİZİN ÜÇÜN</span><h2>Ən yeni elanlar</h2></div><div class="sort"><span>Sırala:</span><select id="sortSelect"><option value="new">Ən yeni</option><option value="low">Ucuzdan bahaya</option><option value="high">Bahadan ucuza</option></select></div></div>
+      <div class="chips" id="chips"><button class="active" data-category="Hamısı">Hamısı</button><button data-category="Nəqliyyat">Nəqliyyat</button><button data-category="Elektronika">Elektronika</button><button data-category="Daşınmaz əmlak">Daşınmaz əmlak</button><button data-category="Ev və bağ">Ev və bağ</button></div>
+      <div class="listing-grid" id="listingGrid"></div>
+      <div class="empty" id="emptyState" hidden><span>⌕</span><h3>Heç nə tapılmadı</h3><p>Axtarış sözünü və ya filtrləri dəyişin.</p></div>
+      <button class="load-more" id="loadMore">Daha çox göstər</button>
+    </section>
+
+    <section class="how" id="how">
+      <div><span class="kicker">ÇOX ASAN</span><h2>3 addımda sat</h2><p>İstifadə etmədiyin əşyaya yeni sahib tapmaq bir neçə dəqiqə çəkir.</p></div>
+      <ol><li><b>01</b><div><h3>Şəkil çək</h3><p>Məhsulunu aydın şəkildə göstər.</p></div></li><li><b>02</b><div><h3>Elan yarat</h3><p>Məlumat və münasib qiymət əlavə et.</p></div></li><li><b>03</b><div><h3>Razılaş və sat</h3><p>Alıcı ilə təhlükəsiz əlaqə saxla.</p></div></li></ol>
+    </section>
+
+    <section class="safety" id="safety"><div class="shield">✓</div><div><span class="kicker">TƏHLÜKƏSİZLİK</span><h2>Rahat al, arxayın sat</h2><p>Şübhəli elanları yoxlayırıq, təhlükəsiz alış-veriş üçün tövsiyələr veririk və icmamızı qoruyuruq.</p></div><button>Qaydaları oxu →</button></section>
+  </main>
+
+  <footer><a class="brand" href="#"><span class="brand-mark">S</span><span>satdıq</span><b>.az</b></a><p>Azərbaycanda ağıllı alış-verişin ünvanı.</p><span>© 2026 Satdıq</span></footer>
+
+  <dialog id="postDialog">
+    <form method="dialog" id="postForm"><button class="close" value="cancel" aria-label="Bağla">×</button><span class="kicker">PULSUZ ELAN</span><h2>Nə satırsınız?</h2><p>Əsas məlumatları əlavə edin. Elan dərhal önizləmədə görünəcək.</p><label>Elanın adı<input name="title" required placeholder="Məsələn, iPhone 14 Pro" /></label><div class="form-row"><label>Qiymət (₼)<input name="price" type="number" min="0" required placeholder="0" /></label><label>Şəhər<select name="city"><option>Bakı</option><option>Sumqayıt</option><option>Gəncə</option><option>Şəki</option></select></label></div><label>Kateqoriya<select name="category"><option>Elektronika</option><option>Nəqliyyat</option><option>Daşınmaz əmlak</option><option>Ev və bağ</option><option>Şəxsi əşyalar</option></select></label><button class="submit" value="default">Elanı yerləşdir</button></form>
+  </dialog>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
