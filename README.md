@@ -1,4 +1,4 @@
-# Satdıq.az
+# SATAQ.AZ
 
 Azərbaycan üçün hazırlanmış müasir elan platforması prototipi. Layihə Avito tipli alqı-satqı təcrübəsindən ilhamlanır, lakin öz brendi, vizual dili və azərbaycanca interfeysi var.
 
